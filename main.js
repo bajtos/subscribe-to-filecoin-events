@@ -69,9 +69,10 @@ console.log("My peer id:", node.peerId);
 
 node.pubsub.addEventListener("message", ({ detail }) => {
   console.log(
-    "%s [MSG:%s] %s",
+    "%s [MSG:%s:%s] %s",
     now(),
     detail.topic,
+    detail.type,
     Buffer.from(detail.data).toString("base64"),
   );
   if (detail.topic === "/indexer/ingest/mainnet") {
