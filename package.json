@@ -1,0 +1,13 @@
+{
+  "name": "subscribe-to-filecoin-events",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "An example using Gossibsub to listen for Filecoin events",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Miroslav Bajtoš <oss@bajtos.net>",
+  "license": "MIT"
+}
