@@ -89,6 +89,11 @@ node.pubsub.subscribe("/fil/msgs/mainnet");
 node.pubsub.subscribe("/fil/msgs/testnet");
 node.pubsub.subscribe("/indexer/ingest/mainnet");
 
+// https://drand.love/developer/gossipsub/#pubsub-network
+node.pubsub.subscribe(
+  "/drand/pubsub/v0.0.0/8990e7a9aaed2ffed73dbd7092123d6f289930540d7651336225dc172e51b2ce",
+);
+
 function now() {
   return new Date().toISOString().split("T")[1];
 }
