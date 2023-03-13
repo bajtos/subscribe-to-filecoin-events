@@ -4,19 +4,23 @@ specifiers:
   '@chainsafe/libp2p-gossipsub': ^6.2.0
   '@chainsafe/libp2p-noise': ^11.0.1
   '@chainsafe/libp2p-yamux': ^3.0.7
+  '@ipld/dag-cbor': ^9.0.0
   '@libp2p/bootstrap': ^6.0.0
   '@libp2p/kad-dht': ^7.0.3
   '@libp2p/tcp': ^6.1.2
   libp2p: ^0.42.2
+  multiformats: ^11.0.2
 
 dependencies:
   '@chainsafe/libp2p-gossipsub': 6.2.0
   '@chainsafe/libp2p-noise': 11.0.1
   '@chainsafe/libp2p-yamux': 3.0.7
+  '@ipld/dag-cbor': 9.0.0
   '@libp2p/bootstrap': 6.0.0
   '@libp2p/kad-dht': 7.0.3
   '@libp2p/tcp': 6.1.2
   libp2p: 0.42.2
+  multiformats: 11.0.2
 
 packages:
 
@@ -133,6 +137,14 @@ packages:
       uint8arraylist: 2.4.3
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /@ipld/dag-cbor/9.0.0:
+    resolution: {integrity: sha512-zdsiSiYDEOIDW7mmWOYWC9gukjXO+F8wqxz/LfN7iSwTfIyipC8+UQrCbPupFMRb/33XQTZk8yl3My8vUQBRoA==}
+    engines: {node: '>=16.0.0', npm: '>=7.0.0'}
+    dependencies:
+      cborg: 1.10.0
+      multiformats: 11.0.2
     dev: false
 
   /@libp2p/bootstrap/6.0.0:
@@ -868,6 +880,11 @@ packages:
     engines: {node: '>=16.0.0', npm: '>=7.0.0'}
     dependencies:
       uint8arraylist: 2.4.3
+    dev: false
+
+  /cborg/1.10.0:
+    resolution: {integrity: sha512-/eM0JCaL99HDHxjySNQJLaolZFVdl6VA0/hEKIoiQPcQzE5LrG5QHdml0HaBt31brgB9dNe1zMr3f8IVrpotRQ==}
+    hasBin: true
     dev: false
 
   /cross-spawn/7.0.3:

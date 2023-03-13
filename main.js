@@ -5,6 +5,7 @@ import { yamux } from "@chainsafe/libp2p-yamux";
 import { tcp } from "@libp2p/tcp";
 import { bootstrap } from "@libp2p/bootstrap";
 import { gossipsub } from "@chainsafe/libp2p-gossipsub";
+import { decode } from "@ipld/dag-cbor";
 
 const node = await createLibp2p({
   transports: [tcp()],
@@ -58,23 +59,16 @@ const node = await createLibp2p({
   }),
 
   pubsub: gossipsub({
-    // TODO
+    // Do we need any extra config here?
   }),
 });
 
 await node.start();
 console.log("My peer id:", node.peerId);
 
-node.addEventListener("peer:discovery", function (event) {
-  console.log(
-    "%s [PEER FOUND]",
-    now(),
-    event.detail.id.toString(),
-    event.detail.multiaddrs?.[0]?.toString(),
-    "protocols:",
-    event.detail.protocols,
-  );
-});
+// node.addEventListener("peer:discovery", function ({ detail }) {
+//   console.log("%s [PEER FOUND]", now(), detail.id);
+// });
 
 node.pubsub.addEventListener("message", ({ detail }) => {
   console.log(
@@ -83,6 +77,12 @@ node.pubsub.addEventListener("message", ({ detail }) => {
     detail.topic,
     Buffer.from(detail.data).toString("base64"),
   );
+  if (detail.topic === "/indexer/ingest/mainnet") {
+    let message = decode(detail.data);
+    console.log(message);
+    const cid = /** @type import("multiformats/cid").CID */ (message[0]);
+    console.log("CID:", cid.toString());
+  }
 });
 
 node.pubsub.subscribe("/fil/blocks/mainnet");
