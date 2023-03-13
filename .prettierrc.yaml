@@ -1,0 +1,8 @@
+singleQuote: false
+printWidth: 80
+trailingComma: all
+proseWrap: always
+overrides:
+  - files: '*.yaml'
+    options:
+      proseWrap: preserve
